@@ -15,6 +15,8 @@
 		706B84F21C4135F70017EDD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 706B84F01C4135F70017EDD2 /* LaunchScreen.storyboard */; };
 		706B84FD1C4135F70017EDD2 /* PokedexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B84FC1C4135F70017EDD2 /* PokedexTests.m */; };
 		706B85081C4135F70017EDD2 /* PokedexUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B85071C4135F70017EDD2 /* PokedexUITests.m */; };
+		706B851C1C413F940017EDD2 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706B851A1C413F940017EDD2 /* AFNetworking.framework */; };
+		706B851D1C413F940017EDD2 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706B851B1C413F940017EDD2 /* Mantle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		706B85031C4135F70017EDD2 /* PokedexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		706B85071C4135F70017EDD2 /* PokedexUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PokedexUITests.m; sourceTree = "<group>"; };
 		706B85091C4135F70017EDD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		706B851A1C413F940017EDD2 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		706B851B1C413F940017EDD2 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706B851C1C413F940017EDD2 /* AFNetworking.framework in Frameworks */,
+				706B851D1C413F940017EDD2 /* Mantle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C27473C9881D8B42DAA5C47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				706B851A1C413F940017EDD2 /* AFNetworking.framework */,
+				706B851B1C413F940017EDD2 /* Mantle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		706B84D61C4135F70017EDD2 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +100,7 @@
 				706B84FB1C4135F70017EDD2 /* PokedexTests */,
 				706B85061C4135F70017EDD2 /* PokedexUITests */,
 				706B84E01C4135F70017EDD2 /* Products */,
+				3C27473C9881D8B42DAA5C47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +190,7 @@
 				706B84DB1C4135F70017EDD2 /* Sources */,
 				706B84DC1C4135F70017EDD2 /* Frameworks */,
 				706B84DD1C4135F70017EDD2 /* Resources */,
+				706B851E1C413FC80017EDD2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -288,6 +305,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		706B851E1C413FC80017EDD2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Mantle.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		706B84DB1C4135F70017EDD2 /* Sources */ = {
@@ -437,6 +472,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.fabionogueira.Pokedex;
@@ -448,6 +487,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.fabionogueira.Pokedex;
@@ -522,6 +565,7 @@
 				706B850E1C4135F70017EDD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		706B850F1C4135F70017EDD2 /* Build configuration list for PBXNativeTarget "PokedexTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +574,7 @@
 				706B85111C4135F70017EDD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		706B85121C4135F70017EDD2 /* Build configuration list for PBXNativeTarget "PokedexUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +583,7 @@
 				706B85141C4135F70017EDD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
