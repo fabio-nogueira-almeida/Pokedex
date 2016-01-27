@@ -1,2 +1,4 @@
 github "AFNetworking/AFNetworking" ~> 3.0
 github "Mantle/Mantle"
+github "Overcoat/Overcoat" "3.0.0"
+

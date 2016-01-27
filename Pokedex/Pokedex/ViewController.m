@@ -8,6 +8,11 @@
 
 #import "ViewController.h"
 
+#import "Endpoint.h"
+#import "Pokemon.h"
+
+#import <AFNetworking/AFNetworking.h>
+
 @interface ViewController ()
 
 @end
@@ -16,7 +21,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://pokeapi.co/api/v1/"]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager GET:[Endpoint path:EndPointPokemonCodigo withIdentifier:2]
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+             NSError *error = nil;
+
+             Pokemon *pokemon = [MTLJSONAdapter modelOfClass:[Pokemon class]
+                                          fromJSONDictionary:responseObject
+                                                       error:&error];
+
+             
+             NSLog(@"sucesso");
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"error");
+         }];
 }
 
 - (void)didReceiveMemoryWarning {
