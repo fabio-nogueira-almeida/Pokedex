@@ -22,14 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    #warning TODO - Extract
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://pokeapi.co/api/v1/"]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager GET:[Endpoint path:EndPointPokemonCodigo withIdentifier:2]
+    [manager GET:[Endpoint path:EndPointPokemonIdentifier withIdentifier:2]
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
              NSError *error = nil;
 
              Pokemon *pokemon = [MTLJSONAdapter modelOfClass:[Pokemon class]

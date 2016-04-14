@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7022320C1CB5CF6F007AF982 /* testMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 7022320B1CB5CF6F007AF982 /* testMock.m */; };
+		702232101CB5D133007AF982 /* mock.json in Sources */ = {isa = PBXBuildFile; fileRef = 7022320E1CB5D133007AF982 /* mock.json */; };
+		702232131CB5D15A007AF982 /* GenericMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 702232121CB5D15A007AF982 /* GenericMock.m */; };
+		702232141CB5D23D007AF982 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706B851A1C413F940017EDD2 /* AFNetworking.framework */; };
 		704A1FEE1C58403300BAF586 /* Endpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 704A1FED1C58403300BAF586 /* Endpoint.m */; };
 		704A1FEF1C58403300BAF586 /* Endpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 704A1FED1C58403300BAF586 /* Endpoint.m */; };
 		706B84E41C4135F70017EDD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 706B84E31C4135F70017EDD2 /* main.m */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7022320B1CB5CF6F007AF982 /* testMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testMock.m; sourceTree = "<group>"; };
+		7022320E1CB5D133007AF982 /* mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
+		702232111CB5D15A007AF982 /* GenericMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericMock.h; sourceTree = "<group>"; };
+		702232121CB5D15A007AF982 /* GenericMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericMock.m; sourceTree = "<group>"; };
 		704A1FEC1C58403300BAF586 /* Endpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Endpoint.h; sourceTree = "<group>"; };
 		704A1FED1C58403300BAF586 /* Endpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Endpoint.m; sourceTree = "<group>"; };
 		706B84DF1C4135F70017EDD2 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702232141CB5D23D007AF982 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +109,16 @@
 				706B851B1C413F940017EDD2 /* Mantle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7022320D1CB5D11B007AF982 /* mock */ = {
+			isa = PBXGroup;
+			children = (
+				7022320E1CB5D133007AF982 /* mock.json */,
+				702232111CB5D15A007AF982 /* GenericMock.h */,
+				702232121CB5D15A007AF982 /* GenericMock.m */,
+			);
+			name = mock;
 			sourceTree = "<group>";
 		};
 		704A1FEB1C58401B00BAF586 /* API */ = {
@@ -159,8 +178,10 @@
 		706B84FB1C4135F70017EDD2 /* PokedexTests */ = {
 			isa = PBXGroup;
 			children = (
+				7022320D1CB5D11B007AF982 /* mock */,
 				706B84FC1C4135F70017EDD2 /* PokedexTests.m */,
 				706B84FE1C4135F70017EDD2 /* Info.plist */,
+				7022320B1CB5CF6F007AF982 /* testMock.m */,
 			);
 			path = PokedexTests;
 			sourceTree = "<group>";
@@ -364,7 +385,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702232131CB5D15A007AF982 /* GenericMock.m in Sources */,
 				704A1FEF1C58403300BAF586 /* Endpoint.m in Sources */,
+				702232101CB5D133007AF982 /* mock.json in Sources */,
+				7022320C1CB5CF6F007AF982 /* testMock.m in Sources */,
 				706B84FD1C4135F70017EDD2 /* PokedexTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +552,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PokedexTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.fabionogueira.PokedexTests;
@@ -540,6 +568,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PokedexTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.fabionogueira.PokedexTests;
