@@ -28,26 +28,26 @@
 
 - (void)testExample {
     // response e verificar se é um pokemon
-    
-    id mock = [[GenericMock alloc] initMockWithClass:[AFHTTPSessionManager class]
-                                                      selector:@selector(GET:parameters:success:failure:)
-                                                        result:nil];
-    
-    [mock GET:@""
-      parameters:nil
-        progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             NSError *error = nil;
-             
-//             Pokemon *pokemon = [MTLJSONAdapter modelOfClass:[Pokemon class]
-//                                          fromJSONDictionary:responseObject
-//                                                       error:&error];
-             
-             
-             NSLog(@"sucesso");
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             NSLog(@"error");
-         }];
+//    
+//    id mock = [[GenericMock alloc] initMockWithClass:[AFHTTPSessionManager class]
+//                                                      selector:@selector(GET:parameters:success:failure:)
+//                                                        result:nil];
+//    
+//    [mock GET:@""
+//      parameters:nil
+//        progress:nil
+//         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+////             NSError *error = nil;
+//             
+////             Pokemon *pokemon = [MTLJSONAdapter modelOfClass:[Pokemon class]
+////                                          fromJSONDictionary:responseObject
+////                                                       error:&error];
+//             
+//             
+//             NSLog(@"sucesso");
+//         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//             NSLog(@"error");
+//         }];
 }
 
 @end

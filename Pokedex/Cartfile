@@ -1,4 +1,3 @@
 github "AFNetworking/AFNetworking" ~> 3.0
+github "erikdoe/ocmock"
 github "Mantle/Mantle"
-github "Overcoat/Overcoat" "3.0.0"
-

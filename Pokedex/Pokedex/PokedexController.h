@@ -8,6 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PokedexController : UITableViewController
-
+@interface PokedexController : UITableViewController <UITableViewDataSource>
 @end

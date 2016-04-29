@@ -1,5 +1,5 @@
 // AFHTTPRequestSerializationTests.m
-// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
+// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -100,6 +100,12 @@
     XCTAssertTrue([[[serializedRequest URL] query] isEqualToString:@"key=value"], @"Query parameters have not been serialized correctly (%@)", [[serializedRequest URL] query]);
 }
 
+- (void)testThatEmptyDictionaryParametersAreProperlyEncoded {
+    NSURLRequest *originalRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://example.com"]];
+    NSURLRequest *serializedRequest = [self.requestSerializer requestBySerializingRequest:originalRequest withParameters:@{} error:nil];
+    XCTAssertFalse([serializedRequest.URL.absoluteString hasSuffix:@"?"]);
+}
+
 - (void)testThatAFHTTPRequestSerialiationSerializesURLEncodableQueryParametersCorrectly {
     NSURLRequest *originalRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://example.com"]];
     NSURLRequest *serializedRequest = [self.requestSerializer requestBySerializingRequest:originalRequest withParameters:@{@"key":@" :#[]@!$&'()*+,;=/?"} error:nil];
@@ -181,6 +187,16 @@
     XCTAssertTrue([serializer.HTTPRequestHeaders[headerField] isEqualToString:headerValue]);
     [serializer setValue:nil forHTTPHeaderField:headerField];
     XCTAssertFalse([serializer.HTTPRequestHeaders.allKeys containsObject:headerField]);
+}
+
+#pragma mark - Helper Methods
+
+- (void)testQueryStringFromParameters {
+    XCTAssertTrue([AFQueryStringFromParameters(@{@"key":@"value",@"key1":@"value&"}) isEqualToString:@"key=value&key1=value%26"]);
+}
+
+- (void)testPercentEscapingString {
+    XCTAssertTrue([AFPercentEscapedStringFromString(@":#[]@!$&'()*+,;=?/") isEqualToString:@"%3A%23%5B%5D%40%21%24%26%27%28%29%2A%2B%2C%3B%3D?/"]);
 }
 
 #pragma mark - #3028 tests

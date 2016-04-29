@@ -16,6 +16,9 @@
         case EndPointPokemonIdentifier:
             path = @"pokemon/";
             break;
+        case EndPointPokemonList:
+            path = @"pokedex/1/";
+            break;
             
         default:
             break;

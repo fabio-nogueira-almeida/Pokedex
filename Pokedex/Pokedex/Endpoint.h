@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    EndPointPokemonIdentifier
+    EndPointPokemonIdentifier,
+    EndPointPokemonList
 } EndPointPokemon;
 
 @interface Endpoint : NSObject
